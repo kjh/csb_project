@@ -97,7 +97,8 @@ def edit_question(request, question_id):
         question.question_text = request.POST.get('question_text')
         if question.question_text:
             try:
-                question.full_clean() # Flaw 5 fix requires also max_length=200 to work
+                pass
+                #question.full_clean() # Flaw 5 fix requires also max_length=200 to work
             except ValidationError:
                 return HttpResponseBadRequest("Invalid input")
 
