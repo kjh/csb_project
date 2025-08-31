@@ -1,0 +1,30 @@
+{{ username }}
+
+<form action="/polls/search_question/" method="get">
+    <input type="text" name="question_text" placeholder="Search for poll questions" required>
+    <button type="submit">Search</button>
+</form>
+
+{% if search_result %}
+    <ul>
+    {% for question in search_result %}
+    <li><a href="{% url 'polls:detail' question.0 %}">{{ question.1 }}</a></li> {% comment %} FLAW 1 {% endcomment %}
+    {% comment %}
+        FLAW 1 FIX 
+        replace above flaw with this fix: <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endcomment %}
+    {% endfor %}
+    </ul>
+{% elif not hide_search %}
+    <p>No rearch results.</p>
+{% endif %}
+
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+    <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% elif not hide_latest %}
+    <p>No polls are available.</p>
+{% endif %}

@@ -1,0 +1,16 @@
+<h2>Edit Question</h2>
+
+<form method="post">
+    {% csrf_token %}
+    
+    <label for="question_text">Question Text:</label><br>
+    <input type="text" id="question_text" name="question_text" value="{{ question.question_text }}"><br><br>
+
+    <label for="additional_data">Additional data:</label><br>
+    <input type="text" id="additional_data" name="additional_data" value="{{ question.additional_data }}"><br><br>
+
+    <label for="pub_date">Publication Date:</label><br>
+    <input type="date" id="pub_date" name="pub_date" value="{{ question.pub_date|date:'Y-m-d' }}"><br><br>
+
+    <button type="submit">Save</button>
+</form>
