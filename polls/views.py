@@ -10,11 +10,11 @@ from .models import Choice, Question
 from django.db import connection 
 
 # load_url allowed urls
-# allowed_url_list = [''] # FLAW 2 FIX
+#allowed_url_list = [''] # FLAW 2 FIX
 
 # Utility fuction that is used to load external poll data
 def load_url(data_url):
-    #parsed_url = urlparse(poll_url)
+    #parsed_url = urlparse(data_url)
     #if parsed_url.netloc in allowed_url_list: 
     res = requests.get(data_url) # FLAW 2     
     #else:
